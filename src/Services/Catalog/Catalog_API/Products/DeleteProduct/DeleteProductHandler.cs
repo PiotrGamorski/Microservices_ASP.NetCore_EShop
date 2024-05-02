@@ -11,7 +11,7 @@
         {
             logger.LogInformation("DeleteProductCommandHandler.Handle called with {@Command}", command);
 
-            var product = await session.LoadAsync<Product>(command.Id);
+            var product = await session.LoadAsync<Product>(command.Id, cancellationToken);
            
             if (product == null) return new DeleteProductResult(false);
 
