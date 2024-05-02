@@ -17,19 +17,12 @@
     }
 
     internal class CreateProductCommandHandler
-        (IDocumentSession session, ILogger<CreateProductCommandHandler> logger, IValidator<CreateProductCommand> validator)
+        (IDocumentSession session, ILogger<CreateProductCommandHandler> logger)
         : ICommandHandler<CreateProductCommand, CreateProductResult>
     {
         public async Task<CreateProductResult> Handle(CreateProductCommand command, CancellationToken cancellationToken)
         {
             logger.LogInformation("GetProductsQueryHandler.Handle called with {@Command}", command);
-
-            var result = await validator.ValidateAsync(command, cancellationToken);
-            var errors = result.Errors.Select(x => x.ErrorMessage).ToList();
-            if (errors.Any()) 
-            {
-                throw new ValidationException(errors.FirstOrDefault());
-            }
 
             var product = new Product
             {
