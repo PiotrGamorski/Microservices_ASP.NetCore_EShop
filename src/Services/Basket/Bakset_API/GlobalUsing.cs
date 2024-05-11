@@ -1,2 +1,14 @@
-﻿global using Bakset_API.Models;
-global using BuildingBlocks.CQRS.Query;
+﻿global using BuildingBlocks.CQRS.Query;
+global using BuildingBlocks.CQRS.Command;
+global using BuildingBlocks.Exceptions;
+global using BuildingBlocks.Behaviors;
+global using BuildingBlocks.Exceptions.Handler;
+global using Bakset_API.Models;
+global using Bakset_API.Exceptions;
+global using Bakset_API.Data;
+global using Carter;
+global using MediatR;
+global using Marten;
+global using Mapster;
+global using FluentValidation;
+global using Microsoft.Extensions.Caching.Distributed;
