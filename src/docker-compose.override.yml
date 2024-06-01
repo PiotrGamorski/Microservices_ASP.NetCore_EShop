@@ -30,6 +30,15 @@ services:
     restart: always
     ports:
       - "6379:6379"
+    
+  orderdb:
+    container_name: orderdb
+    environment:
+     - ACCEPT_EULA=Y
+     - SA_PASSWORD=DupaJasia123
+    restart: always
+    ports:
+     - "1433:1433"
 
   catalog_api:
     environment:
