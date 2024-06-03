@@ -1,5 +1,4 @@
-﻿
-namespace Ordering_Domain.Abstractions
+﻿namespace Ordering_Domain.Abstractions
 {
     public abstract class Entity<T> : IEntity<T>
     {
