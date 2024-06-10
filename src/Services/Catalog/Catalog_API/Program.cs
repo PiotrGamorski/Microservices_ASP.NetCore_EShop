@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 var assembly = typeof(Program).Assembly;
 var connectionString = builder.Configuration.GetConnectionString("Database")!;
 
-// Add services to container
+// Add services to the container
 builder.Services.AddCarter();
 
 builder.Services.AddMediatR(config => 
