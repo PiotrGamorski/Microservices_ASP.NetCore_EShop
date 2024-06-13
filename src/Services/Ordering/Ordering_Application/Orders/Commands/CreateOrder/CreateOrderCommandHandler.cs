@@ -33,17 +33,17 @@
                 orderDto.BillingAddress.ZipCode);
 
             var newOrder = Order.Create(
-                id: OrderId.Of(orderDto.Id),
+                id: OrderId.Of(Guid.NewGuid()),
                 customerId: CustomerId.Of(orderDto.CustomerId),
                 orderName: OrderName.Of(orderDto.OrderName),
                 shippingAddress: shippingAddress,
                 billingAddress: billingAddress,
                 payment: Payment.Of(
-                    orderDto.Payment.CardName,
-                    orderDto.Payment.CardNumber,
-                    orderDto.Payment.Expiration,
-                    orderDto.Payment.CVV,
-                    orderDto.Payment.PaymentMethod));
+                    cardName: orderDto.Payment.CardName,
+                    cardNumber: orderDto.Payment.CardNumber,
+                    expiration: orderDto.Payment.Expiration,
+                    cvv: orderDto.Payment.Cvv,
+                    paymentMethod: orderDto.Payment.PaymentMethod));
 
             foreach (var orderItem in orderDto.OrderItems)
             {
