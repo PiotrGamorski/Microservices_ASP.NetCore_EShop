@@ -10,8 +10,9 @@ namespace Ordering_Application.Orders.Queries.GetOrdersByCustomer
     {
         public async Task<GetOrdersByCustomerResult> Handle(GetOrdersByCustomerQuery query, CancellationToken cancellationToken)
         {
+            var customerId = CustomerId.Of(query.CustomerId);
             _ = await dbContext.Customers
-                .FindAsync([query.CustomerId], cancellationToken: cancellationToken)
+                .FindAsync([customerId], cancellationToken: cancellationToken)
                 ?? throw new CustomerNotFoundException(query.CustomerId);
 
             var orders = await dbContext.Orders

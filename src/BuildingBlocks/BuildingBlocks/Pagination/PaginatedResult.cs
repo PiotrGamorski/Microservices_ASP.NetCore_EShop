@@ -4,9 +4,9 @@
         (int pageIndex, int pageSize, long count, IEnumerable<TEntity> data)
         where TEntity : class
     {
-        public int PageIndex { get; set; }
-        public int PageSize { get; set; }
-        public long Count { get; set; }
+        public int PageIndex { get; set; } = pageIndex;
+        public int PageSize { get; set; } = pageSize;
+        public long Count { get; set; } = count;
         public IEnumerable<TEntity> Data { get; } = data;
     }
 }
