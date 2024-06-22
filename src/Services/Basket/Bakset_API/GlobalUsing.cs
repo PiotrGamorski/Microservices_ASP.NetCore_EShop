@@ -3,6 +3,7 @@ global using BuildingBlocks.CQRS.Command;
 global using BuildingBlocks.Exceptions;
 global using BuildingBlocks.Behaviors;
 global using BuildingBlocks.Exceptions.Handler;
+global using Bakset_API.Dtos;
 global using Bakset_API.Models;
 global using Bakset_API.Exceptions;
 global using Bakset_API.Data;
