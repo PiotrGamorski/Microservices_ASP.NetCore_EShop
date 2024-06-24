@@ -1,6 +1,6 @@
 ﻿namespace Bakset_API.Basket.CheckoutBasket
 {
-    public record CheckoutBasketRequest(BasketCheckoutDto BaskteCheckoutDto);
+    public record CheckoutBasketRequest(BasketCheckoutDto BasketCheckoutDto);
 
     public record CheckoutBasketResponse(bool IsSuccess);
 
