@@ -7,7 +7,8 @@
         "catalog_api": "StartDebugging",
         "bakset_api": "StartDebugging",
         "discount_grpc": "StartDebugging",
-        "ordering_api": "StartDebugging"
+        "ordering_api": "StartDebugging",
+        "yarpapigateway": "StartDebugging"
       }
     }
   }
