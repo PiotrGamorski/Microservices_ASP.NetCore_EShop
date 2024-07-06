@@ -29,6 +29,15 @@ namespace Bakset_API.Data
             return basket;
         }
 
+        public async Task<ShoppingCart> UpdateBasket(ShoppingCart basket, CancellationToken cancellationToken = default)
+        {
+            await repository.UpdateBasket(basket, cancellationToken);
+
+            await cache.SetStringAsync(basket.UserName, JsonSerializer.Serialize(basket), cancellationToken);
+
+            return basket;
+        }
+
         public async Task<bool> DeleteBakset(string userName, CancellationToken cancellationToken = default)
         {
             await repository.DeleteBakset(userName, cancellationToken);

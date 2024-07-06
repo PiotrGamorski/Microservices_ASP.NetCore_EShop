@@ -21,6 +21,14 @@
             return basket;
         }
 
+        public async Task<ShoppingCart> UpdateBasket(ShoppingCart basket, CancellationToken cancellationToken = default)
+        { 
+            session.Update(basket);
+            await session.SaveChangesAsync(cancellationToken);
+
+            return basket;
+        }
+
         public async Task<bool> DeleteBakset(string userName, CancellationToken cancellationToken = default)
         {
             session.Delete<ShoppingCart>(userName);
