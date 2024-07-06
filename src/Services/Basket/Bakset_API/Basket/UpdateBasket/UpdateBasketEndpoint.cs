@@ -8,7 +8,7 @@ namespace Bakset_API.Basket.UpdateBasket
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPost("/basket/update", async (UpdateBasketRequest request, ISender sender) =>
+            app.MapPut("/basket", async (UpdateBasketRequest request, ISender sender) =>
             {
                 var command = request.Adapt<UpdateBasketCommand>();
                 var result = await sender.Send(command);
