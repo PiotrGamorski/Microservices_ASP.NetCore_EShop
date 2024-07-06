@@ -8,6 +8,9 @@
         [Post("/basket-service/basket")]
         Task<StoreBasketResponse> StoreBasket(StoreBasketRequest request);
 
+        [Post("/basket-service/basket/update")]
+        Task<UpdateBaksetResponse> UpdateBasket(UpdateBasketRequest request);
+
         [Delete("/basket-service/basket/{userName}")]
         Task<DeleteBasketResponse> DeleteBasket(string userName);
 

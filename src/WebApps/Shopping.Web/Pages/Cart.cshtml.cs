@@ -25,10 +25,12 @@ namespace Shopping.Web.Pages
             Cart = await basketService.LoadUserBasket();
             Cart.Items.RemoveAll(x => x.ProductId == productId);
 
-            // store new to add new into reddis distributed cache
-            await basketService.StoreBasket(new StoreBasketRequest(Cart));
+            var response = await basketService.UpdateBasket(new UpdateBasketRequest(Cart));
 
-            return RedirectToPage();
+            if (response != null && response.IsSuccess) 
+                return RedirectToPage();
+  
+            return Page();
         }
     }
 }

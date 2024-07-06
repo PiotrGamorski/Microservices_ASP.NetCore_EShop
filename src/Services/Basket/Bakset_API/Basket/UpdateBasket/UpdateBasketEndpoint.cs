@@ -2,13 +2,13 @@
 namespace Bakset_API.Basket.UpdateBasket
 {
     public record UpdateBasketRequest(ShoppingCart Cart);
-    public record UpdateBasketResponse(string UserName);
+    public record UpdateBasketResponse(bool IsSuccess);
 
     public class UpdateBasketEndpoint : ICarterModule
     {
         public void AddRoutes(IEndpointRouteBuilder app)
         {
-            app.MapPut("/basket", async (UpdateBasketRequest request, ISender sender) =>
+            app.MapPost("/basket/update", async (UpdateBasketRequest request, ISender sender) =>
             {
                 var command = request.Adapt<UpdateBasketCommand>();
                 var result = await sender.Send(command);
@@ -17,7 +17,7 @@ namespace Bakset_API.Basket.UpdateBasket
                 return Results.Ok(response);
             })
             .WithName("UpdateBasket")
-            .Produces<UpdateBasketResponse>(StatusCodes.Status201Created)
+            .Produces<UpdateBasketResponse>(StatusCodes.Status200OK)
             .ProducesProblem(StatusCodes.Status400BadRequest)
             .WithSummary("UpdateBasket")
             .WithDescription("UpdateBasket");

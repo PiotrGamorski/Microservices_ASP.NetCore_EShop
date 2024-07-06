@@ -1,10 +1,9 @@
-﻿using Bakset_API.Basket.StoreBasket;
-using Discount.Grpc;
+﻿using Discount.Grpc;
 
 namespace Bakset_API.Basket.UpdateBasket
 {
     public record UpdateBasketCommand(ShoppingCart Cart) : ICommand<UpdateBasketResult>;
-    public record UpdateBasketResult(string UserName);
+    public record UpdateBasketResult(bool IsSuccess);
 
     public class UpdateBasketCommandValidator : AbstractValidator<UpdateBasketCommand>
     {
@@ -24,7 +23,7 @@ namespace Bakset_API.Basket.UpdateBasket
             await DeductDiscount(command.Cart, cancellationToken);
             await repository.UpdateBasket(command.Cart, cancellationToken);
 
-            return new UpdateBasketResult(command.Cart.UserName);
+            return new UpdateBasketResult(true);
         }
 
         private async Task DeductDiscount(ShoppingCart cart, CancellationToken cancellationToken)
